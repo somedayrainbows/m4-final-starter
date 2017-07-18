@@ -9,11 +9,12 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def create
-    link = current_user.links.new(link_params)
+    link = Link.new(link_params)
     if link.save
       render json: link
     else
       render json: link.errors.full_messages, status: 500
+    end
   end
 
   def update
@@ -28,6 +29,6 @@ class Api::V1::LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:url, :title).merge(user_id: current_user.id)
+    params.require(:link).permit(:url, :title, user_id: current_user.id)
   end
 end

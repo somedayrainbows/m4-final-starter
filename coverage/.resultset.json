@@ -27,12 +27,28 @@
         1,
         null
       ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        33,
+        null,
+        null,
+        1,
+        15,
+        null,
+        null
+      ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/links_controller.rb": [
         1,
         1,
         null,
         1,
-        7,
+        8,
         null,
         null,
         null,
@@ -53,19 +69,15 @@
         null,
         null
       ],
-      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/link.rb": [
         1,
         1,
+        1,
+        1,
         null,
         1,
-        29,
+        0,
         null,
-        null,
-        1,
-        14,
         null,
         null
       ],
@@ -87,9 +99,9 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -119,13 +131,6 @@
         1,
         7,
         null,
-        null
-      ],
-      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/link.rb": [
-        1,
-        1,
-        1,
-        1,
         null
       ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/api/v1/links_controller.rb": [
@@ -161,9 +166,10 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
-    "timestamp": 1500339583
+    "timestamp": 1500343821
   }
 }

@@ -13,7 +13,6 @@ RSpec.feature "as an authenticated user" do
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Welcome: #{@user1.email}")
     expect(page).to have_content("Signout")
-    save_and_open_page
 
     within(".my_links") do
       expect(page).to have_content("Title: #{@link1.title}")
