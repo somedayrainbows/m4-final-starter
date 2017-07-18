@@ -1,8 +1,24 @@
 class Api::V1::LinksController < ApplicationController
 
+  def index
+    render json: Link.all
+  end
+
+  def show
+    render json: Link.find(params[:id])
+  end
+
+  def create
+    link = current_user.links.new(link_params)
+    if link.save
+      render json: link
+    else
+      render json: link.errors.full_messages, status: 500
+  end
+
   def update
     @link = Link.find(params[:id])
-    if @link.update_attributes(link_params)
+    if @link.update_attributes(link_params_read)
       render json: @link
     else
       render json: @link.errors.full_messages, status: 500
@@ -12,6 +28,6 @@ class Api::V1::LinksController < ApplicationController
   private
 
   def link_params
-    params.permit(:read)
+    params.require(:link).permit(:url, :title).merge(user_id: current_user.id)
   end
 end
