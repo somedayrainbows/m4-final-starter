@@ -2,7 +2,10 @@ class NewLink extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { url: '', title: ''}
+    this.state = {
+      url: '',
+      title: ''
+    }
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -21,8 +24,8 @@ class NewLink extends React.Component {
   render() {
     return (
       <div>
-        <input ref='url' placeholder='Enter the url of the link' />
-        <input ref='title' placeholder='Enter a title' />
+        <input ref='url' placeholder='Enter the url of the link' required />
+        <input ref='title' placeholder='Enter a title' required />
         <button onClick={this.handleClick}>Add Link</button>
       </div>
     )
