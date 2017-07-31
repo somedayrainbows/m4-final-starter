@@ -1,21 +1,17 @@
 class Search extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this)
-  }
-
-  handleFilterTextInputChange(e) {
-    this.props.onFilterTextInput(e.target.value)
+  handleSearch(e) {
+    this.props.searchLinks(e.target.value)
   }
 
   render() {
     return (
       <form>
-        <input type='text'
-                placeholder='Start typing to filter...'
-                value={this.props.filterText}
-                onChange={this.handleFilterTextInputChange}
-                />
+          <label>Search</label><br />
+          <input
+            type='text'
+            placeholder='Start typing to filter...'
+            onKeyUp={this.handleSearch.bind(this)}
+          />
       </form>
     )
   }

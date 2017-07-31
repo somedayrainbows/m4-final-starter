@@ -3,7 +3,6 @@ class Body extends React.Component {
     super(props)
 
     this.state = {
-      filterText: '',
       links: []
     }
 
@@ -13,9 +12,11 @@ class Body extends React.Component {
     this.updateLinks = this.updateLinks.bind(this)
     this.handleMarkRead = this.handleMarkRead.bind(this)
     this.sendToHotReads = this.sendToHotReads.bind(this)
+    this.searchLinks = this.searchLinks.bind(this)
   }
 
   componentDidMount() {
+    const links = JSON.parse(localStorage.getItem('links')) || []
     $.getJSON('/api/v1/links', links => this.setState({ links }))
   }
 
@@ -72,17 +73,27 @@ class Body extends React.Component {
     this.setState({links: links})
   }
 
+  searchLinks(query) {
+    let links = this.state.links.filter((link) => {
+      return link.title.includes(query) || link.url.includes(query)
+    })
+    this.setState({links: links})
+  }
+
   render() {
     return (
       <div>
         <div className="jumbotron">
           <NewLink handleSubmit={this.handleSubmit} />
           <br />
-          <Search />
+          <Search searchLinks={this.searchLinks.bind(this)}/>
           <br />
           <div className="row">
             <div className="col-md-4">
-              <AllLinks links={this.state.links} handleDelete={this.handleDelete} handleMarkRead={this.handleMarkRead} handleUpdate={this.handleUpdate} />
+              <AllLinks
+                links={this.state.links}
+                handleDelete={this.handleDelete} handleMarkRead={this.handleMarkRead} handleUpdate={this.handleUpdate}
+              />
             </div>
           </div>
         </div>
