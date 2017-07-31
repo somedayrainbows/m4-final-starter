@@ -19,19 +19,15 @@ class Api::V1::LinksController < Api::V1::BaseController
   end
 
   def update
+    # require 'pry', binding.pry;
     link = Link.find(params[:id])
-    link.update_attributes(link_params_read)
+    link.update_attributes(link_params)
     respond_with link, json: link
-    # require 'pry'; binding.pry
   end
 
   private
 
-  def link_params_read
-    params.permit(:read)
-  end
-
   def link_params
-    params.require(:link).permit(:url, :title).merge(user_id: current_user.id)
+    params.require(:link).permit(:title, :url, :read).merge(user_id: current_user.id)
   end
 end
