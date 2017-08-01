@@ -18,9 +18,8 @@ class NewLink extends React.Component {
       type: 'POST',
       data: { link: { url: url, title, title} },
       success: (link => this.props.handleSubmit(link))
-    }).fail(function(xhr){
-        let errors = $.parseJSON(xhr.responseText).errors
-        console.log(errors);
+    }).fail(function() {
+	    alert("URL not valid without http:// or https://")
     })
     this.setState({ url: '', title: ''})
   }
@@ -28,7 +27,6 @@ class NewLink extends React.Component {
   render() {
     return (
       <div>
-        <label>Url:</label>
         <input id='my-url' className='link-url-field' ref='url' placeholder='Enter the url of the link' defaultValue="http://" />
         <input className='link-title-field' ref='title' placeholder='Enter a title' required />
         <button onClick={this.handleClick}>Add Link</button>
