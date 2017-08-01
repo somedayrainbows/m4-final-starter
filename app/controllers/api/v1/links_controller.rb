@@ -10,9 +10,8 @@ class Api::V1::LinksController < Api::V1::BaseController
     if link.save
       respond_with :api, :v1, link
     else
-      render :json => { :errors => link.errors.full_messages }, :status => 422
-
       flash[:notice] = "Not a valid link. Don't forget http:// or https://"
+      render :json => { :errors => link.errors.full_messages }, :status => 422
     end
   end
 
