@@ -1,18 +1,23 @@
 require "rails_helper"
 
-RSpec.describe "can mark links as read", :js => :true do
-  scenario "Mark a link as read" do
-    Link.create(url:"https://turing.io", title:"Turing")
-    visit "/"
-    within('.link .read-status') do
-      expect(page).to have_text("false")
-    end
+RSpec.describe "can mark links as read", js: :true do
+  before do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+  xscenario "Mark a link as read" do
+    visit root_path
+    fill_in('Enter the url of the link', with: 'http://airbnb.com')
+    fill_in('Enter a title', with: 'AirBnB')
+    click_link_or_button "Add Link"
 
-    click_on "Mark as Read"
+    expect(page).to have_content("false")
 
-    within('.link .read-status') do
-      expect(page).to have_text("true")
-    end
+    sleep 20
 
+    click_link_or_button("read-button")
+
+    expect(page).to have_content("Mark as unread")
+    expect(page).to have_content("AirBnB")
   end
 end

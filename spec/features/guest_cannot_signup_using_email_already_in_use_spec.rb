@@ -5,7 +5,7 @@ RSpec.feature "as an authenticated user, when I try to sign up" do
     user1 = create(:user, email: "jane@janedoe.com", password: "password", password_confirmation: "password")
 
     visit root_path
-    click_on "Sign up by clicking here"
+    click_on "Sign Up"
 
     expect(current_path).to eq(signup_path)
 

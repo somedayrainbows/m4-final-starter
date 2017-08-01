@@ -1,4 +1,4 @@
-const Header = React.createClass({
+class Header extends React.Component {
   render() {
     return (
       <div>
@@ -6,4 +6,4 @@ const Header = React.createClass({
       </div>
     )
   }
-})
+}

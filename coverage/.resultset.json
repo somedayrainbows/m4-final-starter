@@ -13,7 +13,15 @@
         1,
         null
       ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/link.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/user.rb": [
+        1,
         1,
         1,
         null,
@@ -27,6 +35,13 @@
         1,
         null
       ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/links_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/application_controller.rb": [
         1,
         null,
@@ -35,26 +50,12 @@
         1,
         null,
         1,
-        32,
+        26,
         null,
         null,
         1,
         14,
         null,
-        null
-      ],
-      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/links_controller.rb": [
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/models/link.rb": [
-        1,
-        1,
-        1,
-        1,
         null
       ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/sessions_controller.rb": [
@@ -63,11 +64,11 @@
         null,
         null,
         1,
-        3,
-        3,
         2,
         2,
-        2,
+        1,
+        1,
+        1,
         null,
         1,
         1,
@@ -109,52 +110,49 @@
         null,
         null
       ],
-      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/api/v1/base_controller.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/api/v1/links_controller.rb": [
+        1,
+        null,
+        1,
+        7,
+        7,
+        null,
+        null,
+        1,
+        3,
+        3,
+        2,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        null,
+        null,
+        1,
+        null,
+        1,
+        3,
+        null,
+        null
+      ],
+      "/Users/ebassity/turing/mod4/final/m4-final-starter/app/controllers/api/v1/base_controller.rb": [
+        1,
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1501187790
+    "timestamp": 1501553738
   }
 }

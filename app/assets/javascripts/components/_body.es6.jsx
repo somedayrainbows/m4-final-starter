@@ -3,31 +3,30 @@ class Body extends React.Component {
     super(props)
 
     this.state = {
-      filterText: '',
-      links: []
+      links: [],
+      message: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.updateLinks = this.updateLinks.bind(this)
-    // this.sendToHotReads = this.sendToHotReads.bind(this)
-    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+    this.handleMarkRead = this.handleMarkRead.bind(this)
+    this.sendToHotReads = this.sendToHotReads.bind(this)
+    this.searchLinks = this.searchLinks.bind(this)
   }
 
   componentDidMount() {
+    const links = JSON.parse(localStorage.getItem('links')) || []
     $.getJSON('/api/v1/links', links => this.setState({ links }))
-  }
-
-  handleFilterTextInput(filterText) {
-    this.setState({
-      filterText: filterText
-    });
   }
 
   handleSubmit(link) {
     let newState = this.state.links.concat(link)
-    this.setState({ links: newState })
+    this.setState({
+      links: newState,
+      message: 'YEAAHHHHHH'
+    })
   }
 
   handleDelete(id) {
@@ -47,31 +46,27 @@ class Body extends React.Component {
     $.ajax({
       url: `/api/v1/links/${link.id}`,
       type: 'PATCH',
-      data: { read: true }
-    })
-    .success(function(data) {
-      this.sendToHotReads.bind(this)
+      data: { link },
+      success: (() => this.sendToHotReads(link)),
     })
   }
 
   sendToHotReads(link) {
-    $.ajax({
-      url: `https://guarded-reef-14770.herokuapp.com/api/v1/links`,
-      type: 'POST',
-      data: { link: url },
-      success: (console.log("success!"))
-    })
-  }
-
-  displayFailure(failureData){
-    console.log("FAILED attempt to update Link: " + failureData.responseText)
+    if(link.read === true) {
+      $.ajax({
+        url: `https://guarded-reef-14770.herokuapp.com/api/v1/links`,
+        type: 'POST',
+        data: { url: link.url },
+        success: (console.log("success!")),
+      })
+    }
   }
 
   handleUpdate(link) {
     $.ajax({
       url: `/api/v1/links/${link.id}`,
       type: 'PUT',
-      data: { link: link },
+      data: { link },
       success: (() => this.updateLinks(link)),
     })
   }
@@ -82,14 +77,30 @@ class Body extends React.Component {
     this.setState({links: links})
   }
 
+  searchLinks(query) {
+    let links = this.state.links.filter((link) => {
+      return link.title.includes(query) || link.url.includes(query)
+    })
+    this.setState({links: links})
+  }
+
   render() {
     return (
       <div>
-        <NewLink handleSubmit={this.handleSubmit} />
-
-        <Search filterText={this.state.filterText} onFilterTextInput={this.handleFilterTextInput} />
-
-        <AllLinks links={this.state.links} filterText={this.state.filterText} handleDelete={this.handleDelete} handleMarkRead={this.handleMarkRead} onUpdate={this.handleUpdate} />
+        <div className="jumbotron">
+          <NewLink handleSubmit={this.handleSubmit} />
+          <br />
+          <Search searchLinks={this.searchLinks.bind(this)}/>
+          <br />
+          <div className='all-links-table'>
+            <div className="col-md-4">
+              <AllLinks
+                links={this.state.links}
+                handleDelete={this.handleDelete} handleMarkRead={this.handleMarkRead} handleUpdate={this.handleUpdate}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
