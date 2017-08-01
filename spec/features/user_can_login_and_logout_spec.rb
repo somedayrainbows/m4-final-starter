@@ -19,7 +19,7 @@ RSpec.feature "as a user" do
     click_on "Signout"
 
     expect(current_path).to eq(login_path)
-    expect(page).to have_content("Sign up by clicking here")
+    expect(page).to have_content("Sign Up")
     expect(page).to have_content("You have logged out successfully.")
   end
 
@@ -33,6 +33,6 @@ RSpec.feature "as a user" do
 
     expect(current_path).to eq(login_path)
     expect(page).to have_content("Invalid user/password combination! Please try again.")
-    expect(page).to have_content("Sign up by clicking here")
+    expect(page).to have_content("Sign Up")
   end
 end

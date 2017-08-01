@@ -3,7 +3,8 @@ class Body extends React.Component {
     super(props)
 
     this.state = {
-      links: []
+      links: [],
+      message: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,7 +23,10 @@ class Body extends React.Component {
 
   handleSubmit(link) {
     let newState = this.state.links.concat(link)
-    this.setState({ links: newState })
+    this.setState({
+      links: newState,
+      message: 'YEAAHHHHHH'
+    })
   }
 
   handleDelete(id) {
@@ -88,7 +92,7 @@ class Body extends React.Component {
           <br />
           <Search searchLinks={this.searchLinks.bind(this)}/>
           <br />
-          <div className="row">
+          <div className='all-links-table'>
             <div className="col-md-4">
               <AllLinks
                 links={this.state.links}

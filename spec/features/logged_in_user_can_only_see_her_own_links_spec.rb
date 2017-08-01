@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "as an authenticated user" do
+RSpec.feature "as an authenticated user", js: :true do
   before do
     @user1 = create(:user)
     @user2 = create(:user)
@@ -13,13 +13,10 @@ RSpec.feature "as an authenticated user" do
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Welcome: #{@user1.email}")
     expect(page).to have_content("Signout")
-    save_and_open_page
 
-    within(".my_links") do
-      expect(page).to have_content("Title: #{@link1.title}")
-      expect(page).to_not have_content("Title: #{@link2.title}")
-      expect(page).to have_content("URL: #{@link1.url}")
-      expect(page).to_not have_content("URL: #{@link2.url}")
-    end
+    expect(page).to have_content("#{@link1.title}")
+    expect(page).to_not have_content("#{@link2.title}")
+    expect(page).to have_content("#{@link1.url}")
+    expect(page).to_not have_content("#{@link2.url}")
   end
 end

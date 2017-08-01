@@ -10,6 +10,8 @@ class Api::V1::LinksController < Api::V1::BaseController
     if link.save
       respond_with :api, :v1, link
     else
+      render :json => { :errors => link.errors.full_messages }, :status => 422
+
       flash[:notice] = "Not a valid link. Don't forget http:// or https://"
     end
   end
@@ -19,7 +21,6 @@ class Api::V1::LinksController < Api::V1::BaseController
   end
 
   def update
-    # require 'pry', binding.pry;
     link = Link.find(params[:id])
     link.update_attributes(link_params)
     respond_with link, json: link

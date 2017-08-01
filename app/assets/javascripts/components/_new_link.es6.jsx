@@ -10,6 +10,7 @@ class NewLink extends React.Component {
   }
 
   handleClick() {
+    console.log(this);
     let url = this.refs.url.value
     let title = this.refs.title.value
     $.ajax({
@@ -17,6 +18,9 @@ class NewLink extends React.Component {
       type: 'POST',
       data: { link: { url: url, title, title} },
       success: (link => this.props.handleSubmit(link))
+    }).fail(function(xhr){
+        let errors = $.parseJSON(xhr.responseText).errors
+        console.log(errors);
     })
     this.setState({ url: '', title: ''})
   }
@@ -24,8 +28,9 @@ class NewLink extends React.Component {
   render() {
     return (
       <div>
-        <input ref='url' placeholder='Enter the url of the link' required />
-        <input ref='title' placeholder='Enter a title' required />
+        <label>Url:</label>
+        <input id='my-url' className='link-url-field' ref='url' placeholder='Enter the url of the link' defaultValue="http://" />
+        <input className='link-title-field' ref='title' placeholder='Enter a title' required />
         <button onClick={this.handleClick}>Add Link</button>
       </div>
     )

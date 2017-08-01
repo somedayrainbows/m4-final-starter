@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "as an authenticated user, when I try to sign up" do
   scenario "I cannot sign up if password and confirmation do not match" do
     visit root_path
-    click_on "Sign up by clicking here"
+    click_on "Sign Up"
 
     expect(current_path).to eq(signup_path)
 

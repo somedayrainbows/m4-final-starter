@@ -8,7 +8,7 @@ class AllLinks extends React.Component {
   }
 
   render() {
-    let links = this.props.links.map(link => (
+    let links = this.props.links.reverse().map(link => (
       <div className="links" key = {link.id}>
         <Link
           link={link}

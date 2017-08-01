@@ -51,12 +51,12 @@ class Link extends React.Component {
     let read = <p>{this.state.read.toString()}</p>
 
     return (
-      <div>
+      <div className="link-details">
         {title}
         {url}
         {read}
-        <button onClick={this.handleMarkRead}>
-          {this.state.read ? 'Mark Unread' : 'Mark Read' }
+        <button className="read-button" onClick={this.handleMarkRead}>
+          {this.state.read ? 'Mark as Unread' : 'Mark as Read' }
         </button>&nbsp;&nbsp;&nbsp;
         <button onClick={this.props.handleDelete}>
           Delete
